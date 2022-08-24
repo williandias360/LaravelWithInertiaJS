@@ -1,0 +1,114 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root{
+    --primary-color: #313A46;
+    --accent-color: #5f72e0;
+    --dark-accent-color: #3551f3;
+    --primary-text: #212121;
+    --divider-color: #BDBDBD;
+    --white-color: #fff;
+}
+
+* {
+    font-family: 'Roboto', sans-serif;
+}
+
+.input-group {
+    position: relative;
+    margin: 20px;
+}
+
+.input {
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    font:inherit;
+    color: var(--primary-color);
+    background-color: transparent;
+    outline: 2px solid var(--accent-color);
+    width: 100%;
+}
+
+.input-label{
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform: translate(10px, 10px);
+    transition: transform .25s;
+    color: var(--accent-color);
+}
+
+.input:focus+.input-label,
+.input:not(:placeholder-shown)+.input-label{
+    transform: translate(10px, -14px) scale(.8);
+    color: var(--accent-color);
+    padding-inline: 5px;
+    background-color: rgb(249, 250, 251)
+}
+
+.input:is(:focus, :valid){
+    outline-color: var(--accent-color);
+}
+
+.input:is(:required)+.input-label::before{
+    content: "*";
+    color: rgb(190, 45, 45);
+    padding-right: 2px;
+}
+
+.input[data-error]{
+    outline-color: rgb(190, 45, 45);
+}
+.input[data-error]+.input-label{
+    color:rgb(190, 45, 45);
+}
+
+select.input,
+select.input>option{
+    color:var(--accent-color)
+}
+
+aside{
+    display: flex;
+    align-content: space-between;
+    width: 100%;
+}
+aside>div.input-group{
+    margin: 10px;
+    width: 100%;
+}
+
+h2 {
+    font-size: 16px;
+    font-weight: 500;
+    margin: 10px;
+    color:var(--accent-color);
+}
+
+h2>b{
+    border-bottom: 2px solid var(--accent-color);
+}
+
+p>
+button,
+input[type="button"],
+input[type="submit"]{
+    background-color: var(--dark-accent-color);
+    padding: 14px 20px;
+    height: auto;
+    color: var(--white-color);
+    font-size: 18px;
+    font-weight: 700;
+    outline: none;
+    border-radius: 4px;
+    box-shadow: 0px 6px 45px #a09b9b;
+}
+
+@media (max-width:800px){
+    aside{
+        display: flex;
+        flex-direction: column;
+    }
+}
